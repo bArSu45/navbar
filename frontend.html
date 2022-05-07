@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRONTEND</title>
+    <style>
+        * {
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        h1{
+            margin-bottom: 40px;
+            font-weight: bolder;
+        }
+        #container {
+            width: 80%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+        }
+
+        #container>div {
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border-radius: 8px;
+        }
+
+        img:nth-child(1) {
+            width: 100%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        h3 {
+            margin-top: 10px;
+            font-weight: 550;
+        }
+
+        p {
+            margin-top: -15px;
+            color: gray;
+            font-size: 12px;
+        }
+
+        p+img {
+            height: 50px;
+            margin-top: -15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Frontend</h1>
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+
+var investerarr = JSON.parse(localStorage.getItem("investerData")) ||[];
+
+console.log(investerarr)
+    investerarr.forEach(function (elem) {
+        var a = document.createElement("div")
+        var iImg = document.createElement("img")
+        iImg.setAttribute("src", elem.investerImg)
+        var iName = document.createElement("h3")
+        iName.innerText = elem.investerName
+        var para = document.createElement("p")
+        para.innerText = elem.investerRole;
+        var logoImg = document.createElement("img")
+        logoImg.setAttribute("src", elem.investerlogo)
+        a.append(iImg, iName, para, logoImg)
+        document.querySelector("#container").append(a)
+    })
+</script>
